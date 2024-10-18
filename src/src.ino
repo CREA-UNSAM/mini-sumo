@@ -1,16 +1,33 @@
 // Definición de pines
-const int pulsador = 5;
-const int ledControl = 13;
-const int motor1_A = 10;
-const int motor1_B = 11;
-const int enableMotor1 = 6;
-const int motor2_A = 7;
-const int motor2_B = 8;
-const int enableMotor2 = 9;
-const int sensorLinea = A5;
+constexpr int pulsador = 5;
+constexpr int ledControl = 13;
+constexpr int motor1_A = 10;
+constexpr int motor1_B = 11;
+constexpr int enableMotor1 = 6;
+constexpr int motor2_A = 7;
+constexpr int motor2_B = 8;
+constexpr int enableMotor2 = 9;
+constexpr int sensorLinea = A5;
 
 // Variable para el estado del pulsador
 bool pulsadorPresionado = false;
+
+class Motor
+{
+private:
+  const int m_pin_a;
+  const int m_pin_b;
+  const int m_enable;
+
+public:
+  Motor(const int pin_a, const int pin_b, const int enable) : 
+    m_pin_a {pin_a}, m_pin_b {pin_b}, m_enable {enable} 
+  {
+    pinMode(m_pin_a, OUTPUT);
+    pinMode(m_pin_b, OUTPUT);
+    pinMode(m_enable, OUTPUT);
+  }
+}
 
 void setup() {
   // Configuración de pines
